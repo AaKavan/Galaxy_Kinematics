@@ -1,2 +1,2 @@
 # Galaxy_Kinematics
-Website for Galaxy Kinematics Using JWST NIRCam Grisms
+Website for Galaxy Kinematics Using JWST NIRCam Grism Observations
