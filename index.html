@@ -9,6 +9,23 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <style>
+        .gk-filter-btn {
+            border-radius: 999px;
+        }
+        .gk-filter-btn.active {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: #fff;
+        }
+        #gk-search::placeholder {
+            color: #aaa;
+        }
+        #gk-no-results {
+            display: none;
+        }
+    </style>
+
 </head>
 
 <body class="bg-dark text-light">
@@ -35,12 +52,29 @@
         Galaxy Kinematics with JWST NIRCam Grisms
     </h1>
 
-    <div class="row g-4">
+    <div class="mb-5">
+
+        <input type="text" id="gk-search"
+               class="form-control form-control-lg bg-secondary text-light border-0 mb-3"
+               placeholder="Search by source ID...">
+
+        <div class="d-flex flex-wrap gap-2">
+            <button class="gk-filter-btn btn btn-outline-light" data-group="line" data-value="Ha">Hα</button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="line" data-value="PaA">Paα</button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="filter" data-value="F444W">F444W</button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="filter" data-value="F356W">F356W</button>
+        </div>
+
+    </div>
+
+    <p id="gk-no-results" class="text-center text-secondary">No sources match your search/filters.</p>
+
+    <div class="row g-4" id="gk-source-grid">
 
         <!-- SOURCE CARDS -->
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="36154" data-filter="F444W" data-line="Ha">
 
             <a href="sources/36154/index.html"
                class="text-decoration-none text-light">
@@ -78,7 +112,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="34403" data-filter="F444W" data-line="Ha">
 
             <a href="sources/34403/index.html"
                class="text-decoration-none text-light">
@@ -116,7 +150,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="30563" data-filter="F444W" data-line="Ha">
 
             <a href="sources/30563/index.html"
                class="text-decoration-none text-light">
@@ -154,7 +188,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="23955" data-filter="F444W" data-line="Ha">
 
             <a href="sources/23955/index.html"
                class="text-decoration-none text-light">
@@ -192,7 +226,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="22835" data-filter="F444W" data-line="Ha">
 
             <a href="sources/22835/index.html"
                class="text-decoration-none text-light">
@@ -230,7 +264,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="20219" data-filter="F444W" data-line="Ha">
 
             <a href="sources/20219/index.html"
                class="text-decoration-none text-light">
@@ -268,7 +302,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="18944" data-filter="F444W" data-line="Ha">
 
             <a href="sources/18944/index.html"
                class="text-decoration-none text-light">
@@ -306,7 +340,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="18212" data-filter="F444W" data-line="Ha">
 
             <a href="sources/18212/index.html"
                class="text-decoration-none text-light">
@@ -344,7 +378,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="15941" data-filter="F444W" data-line="Ha">
 
             <a href="sources/15941/index.html"
                class="text-decoration-none text-light">
@@ -382,7 +416,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="15938" data-filter="F444W" data-line="Ha">
 
             <a href="sources/15938/index.html"
                class="text-decoration-none text-light">
@@ -420,7 +454,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="14666" data-filter="F444W" data-line="Ha">
 
             <a href="sources/14666/index.html"
                class="text-decoration-none text-light">
@@ -458,7 +492,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="12722" data-filter="F444W" data-line="Ha">
 
             <a href="sources/12722/index.html"
                class="text-decoration-none text-light">
@@ -496,7 +530,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="12277" data-filter="F444W" data-line="Ha">
 
             <a href="sources/12277/index.html"
                class="text-decoration-none text-light">
@@ -534,7 +568,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="12086" data-filter="F444W" data-line="Ha">
 
             <a href="sources/12086/index.html"
                class="text-decoration-none text-light">
@@ -572,7 +606,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="11733" data-filter="F444W" data-line="Ha">
 
             <a href="sources/11733/index.html"
                class="text-decoration-none text-light">
@@ -610,7 +644,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="11406" data-filter="F444W" data-line="Ha">
 
             <a href="sources/11406/index.html"
                class="text-decoration-none text-light">
@@ -648,7 +682,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="6084" data-filter="F444W" data-line="Ha">
 
             <a href="sources/6084/index.html"
                class="text-decoration-none text-light">
@@ -686,7 +720,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="4831" data-filter="F444W" data-line="Ha">
 
             <a href="sources/4831/index.html"
                class="text-decoration-none text-light">
@@ -724,7 +758,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="4158" data-filter="F444W" data-line="Ha">
 
             <a href="sources/4158/index.html"
                class="text-decoration-none text-light">
@@ -762,7 +796,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="3976" data-filter="F444W" data-line="Ha">
 
             <a href="sources/3976/index.html"
                class="text-decoration-none text-light">
@@ -800,7 +834,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="3494" data-filter="F444W" data-line="Ha">
 
             <a href="sources/3494/index.html"
                class="text-decoration-none text-light">
@@ -838,7 +872,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="21636" data-filter="F444W" data-line="PaA">
 
             <a href="sources/21636/index.html"
                class="text-decoration-none text-light">
@@ -876,7 +910,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="16887" data-filter="F444W" data-line="PaA">
 
             <a href="sources/16887/index.html"
                class="text-decoration-none text-light">
@@ -914,7 +948,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="15665" data-filter="F444W" data-line="PaA">
 
             <a href="sources/15665/index.html"
                class="text-decoration-none text-light">
@@ -952,7 +986,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="8910" data-filter="F444W" data-line="PaA">
 
             <a href="sources/8910/index.html"
                class="text-decoration-none text-light">
@@ -990,7 +1024,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="6170" data-filter="F444W" data-line="PaA">
 
             <a href="sources/6170/index.html"
                class="text-decoration-none text-light">
@@ -1028,7 +1062,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-4 gk-card" data-id="3700" data-filter="F444W" data-line="PaA">
 
             <a href="sources/3700/index.html"
                class="text-decoration-none text-light">
@@ -1068,6 +1102,50 @@
     </div>
 
 </div>
+
+<script>
+(function(){
+    var searchInput = document.getElementById('gk-search');
+    var filterButtons = document.querySelectorAll('.gk-filter-btn');
+    var cards = document.querySelectorAll('#gk-source-grid > .gk-card');
+    var noResults = document.getElementById('gk-no-results');
+
+    var active = {line: new Set(), filter: new Set()};
+
+    function applyFilters() {
+        var query = searchInput.value.trim();
+        var visibleCount = 0;
+
+        cards.forEach(function(card){
+            var matchesSearch = !query || card.dataset.id.indexOf(query) !== -1;
+            var matchesLine = active.line.size === 0 || active.line.has(card.dataset.line);
+            var matchesFilter = active.filter.size === 0 || active.filter.has(card.dataset.filter);
+            var visible = matchesSearch && matchesLine && matchesFilter;
+            card.style.display = visible ? '' : 'none';
+            if (visible) visibleCount++;
+        });
+
+        noResults.style.display = visibleCount === 0 ? '' : 'none';
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+
+    filterButtons.forEach(function(btn){
+        btn.addEventListener('click', function(){
+            var group = btn.dataset.group;
+            var value = btn.dataset.value;
+            if (active[group].has(value)) {
+                active[group].delete(value);
+                btn.classList.remove('active');
+            } else {
+                active[group].add(value);
+                btn.classList.add('active');
+            }
+            applyFilters();
+        });
+    });
+})();
+</script>
 
 </body>
 
