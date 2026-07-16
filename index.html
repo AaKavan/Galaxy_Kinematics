@@ -18,6 +18,9 @@
             border-color: #0d6efd;
             color: #fff;
         }
+        .gk-count {
+            opacity: 0.65;
+        }
         #gk-search::placeholder {
             color: #aaa;
         }
@@ -59,12 +62,12 @@
                placeholder="Search by source ID...">
 
         <div class="d-flex flex-wrap gap-2">
-            <button class="gk-filter-btn btn btn-outline-light" data-group="line" data-value="Ha">Hα</button>
-            <button class="gk-filter-btn btn btn-outline-light" data-group="line" data-value="PaA">Paα</button>
-            <button class="gk-filter-btn btn btn-outline-light" data-group="filter" data-value="F444W">F444W</button>
-            <button class="gk-filter-btn btn btn-outline-light" data-group="filter" data-value="F356W">F356W</button>
-            <button class="gk-filter-btn btn btn-outline-light" data-group="geko" data-value="yes">Has GEKO</button>
-            <button class="gk-filter-btn btn btn-outline-light" data-group="dingo" data-value="yes">Has DINGO</button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="line" data-value="Ha">Hα <span class="gk-count"></span></button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="line" data-value="PaA">Paα <span class="gk-count"></span></button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="filter" data-value="F444W">F444W <span class="gk-count"></span></button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="filter" data-value="F356W">F356W <span class="gk-count"></span></button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="geko" data-value="yes">Has GEKO <span class="gk-count"></span></button>
+            <button class="gk-filter-btn btn btn-outline-light" data-group="dingo" data-value="yes">Has DINGO <span class="gk-count"></span></button>
         </div>
 
     </div>
@@ -2052,7 +2055,36 @@
         noResults.style.display = visibleCount === 0 ? '' : 'none';
     }
 
-    searchInput.addEventListener('input', applyFilters);
+    // Per-button counts, e.g. "F444W (12)". Each button's count is the number of cards
+    // that would be visible if this button's value were ANDed onto every OTHER active
+    // facet (its own group is ignored so the count reflects "what if I also picked
+    // this value", not "what if I picked this value alone"). That's what lets you
+    // click Paα then read the F444W button's count as the F444W+Paα combo total.
+    function updateCounts() {
+        var query = searchInput.value.trim();
+
+        filterButtons.forEach(function(btn){
+            var group = btn.dataset.group;
+            var value = btn.dataset.value;
+            var count = 0;
+
+            cards.forEach(function(card){
+                if (query && card.dataset.id.indexOf(query) === -1) return;
+                if (card.dataset[group] !== value) return;
+
+                for (var otherGroup in active) {
+                    if (otherGroup === group) continue;
+                    if (active[otherGroup].size > 0 && !active[otherGroup].has(card.dataset[otherGroup])) return;
+                }
+
+                count++;
+            });
+
+            btn.querySelector('.gk-count').textContent = '(' + count + ')';
+        });
+    }
+
+    searchInput.addEventListener('input', function(){ applyFilters(); updateCounts(); });
 
     filterButtons.forEach(function(btn){
         btn.addEventListener('click', function(){
@@ -2066,8 +2098,11 @@
                 btn.classList.add('active');
             }
             applyFilters();
+            updateCounts();
         });
     });
+
+    updateCounts();
 })();
 </script>
 
