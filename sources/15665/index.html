@@ -14,22 +14,6 @@
 
 <body class="bg-dark text-light">
 
-<script>
-(function(){
-  if(sessionStorage.getItem('gk_auth')==='1'){return;}
-  var o=document.createElement('div');
-  o.id='pw-overlay';
-  o.style.cssText='position:fixed;inset:0;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;font-family:sans-serif;';
-  o.innerHTML='<p style="color:#aaa;font-size:1.1rem;margin-bottom:1rem;">Enter password to continue</p><input id="pw-in" type="password" style="padding:0.5rem 1rem;font-size:1.2rem;border-radius:6px;border:1px solid #555;background:#222;color:#fff;outline:none;text-align:center;" autofocus /><p id="pw-err" style="color:#f66;margin-top:0.75rem;min-height:1.2rem;"></p>';
-  document.body.prepend(o);
-  document.getElementById('pw-in').addEventListener('keydown',function(e){
-    if(e.key!=='Enter')return;
-    if(this.value==='1669'){sessionStorage.setItem('gk_auth','1');document.getElementById('pw-overlay').remove();}
-    else{document.getElementById('pw-err').textContent='Incorrect password.';this.value='';}
-  });
-})();
-</script>
-
 <div class="container py-5">
 
     <!-- BACK BUTTON -->
